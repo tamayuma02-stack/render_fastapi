@@ -1,11 +1,8 @@
 from typing import Optional
-
 from fastapi import FastAPI
-
-import random  # randomライブラリを追加
+import random
 
 app = FastAPI()
-
 
 @app.get("/")
 async def root():
@@ -17,17 +14,5 @@ def read_item(item_id: int, q: Optional[str] = None):
 
 @app.get("/omikuji")
 def omikuji():
-    omikuji_list = [
-        "大吉",
-        "中吉",
-        "小吉",
-        "吉",
-        "半吉",
-        "末吉",
-        "末小吉",
-        "凶",
-        "小凶",
-        "大凶"
-    ]
-
-    return omikuji_list[random.randrange(10)]
+    omikuji_list = ["大吉", "中吉", "小吉", "吉", "半吉", "末吉", "末小吉", "凶", "小凶", "大凶"]
+    return {"result": omikuji_list[random.randrange(10)]} # APIらしく辞書型に変更しています
