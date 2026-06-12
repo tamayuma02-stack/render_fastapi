@@ -39,3 +39,9 @@ def index():
     </html>
     """
     return HTMLResponse(content=html_content, status_code=200)
+
+
+
+@app.post("/trade")
+async def trade_item(item: str):
+    return {"response": f"村人: おお！「{item}」をくれるのか！ お礼に「やくそう」をあげよう。"}
